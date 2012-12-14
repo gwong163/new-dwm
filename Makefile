@@ -57,4 +57,11 @@ uninstall:
 	@echo removing manual page from ${DESTDIR}${MANPREFIX}/man1
 	@rm -f ${DESTDIR}${MANPREFIX}/man1/dwm.1
 
-.PHONY: all options clean dist install uninstall
+tags:
+	@ln -s /usr/include .
+	@gtags -vi
+	@cscope -bqR
+	@ctags -eR
+
+
+.PHONY: all options clean dist install uninstall tags
